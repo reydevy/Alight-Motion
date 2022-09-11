@@ -5,14 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Product preview card component</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
 <img alt="" border="0" data-original-height="501" data-original-width="650" src="https://lh3.googleusercontent.com/-BVLkLLsaUpk/YvPz9ILo1XI/AAAAAAAAAr0/r5hlt1t9Lsw8NAUzYc9qfJV0BQavMlX4QCNcBGAsYHQ/h240/New%2BProject%2B%255B8EDAA8F%255D.png.webp"/>
