@@ -2,121 +2,167 @@
 <html>
 <head>
 <style>
-$bg-color: #f3f3f3;
-$shadow-color: darken( $bg-color, 25%);
-$button-color: #337AB7;
-$button-shadow-color: darken($button-color, 25%);
-$cursive-font: 'Pacifico', cursive;
-$font-size: 18px;
 
-*, *:before, *:after {
+@gray-darker:               #444444;
+@gray-dark:                 #696969;
+@gray:                      #999999;
+@gray-light:                #cccccc;
+@gray-lighter:              #ececec;
+@gray-lightest:             lighten(@gray-lighter,4%);
+
+*,
+*::before,
+*::after { 
   box-sizing: border-box;
 }
 
+html {
+  background-color: #f0f0f0;
+}
+
 body {
-  background-color: $bg-color;
+  color: @gray;
+  font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
 }
 
-.product-card {
-  background-color: #fdfefe;
-  max-width: 550px;
-  min-height: 800px;
-  margin: 0 auto;
-  margin-top: 50px;
-  margin-bottom: 150px;
-  box-shadow: 8px 12px 30px $shadow-color;
-  color: #919495;
-  font-weight: normal;
-  text-align: left;
-  font-size: $font-size;
-  position: relative;
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
 }
 
-.product-details {
-  width: 53%;
-  float: left;
-  height: 100%;
-  padding: 30px;
-  h1 {
-    color: #333;
-    font-family: $cursive-font;
-    margin-bottom: 35px;
+.btn {
+  background-color: white;
+  border: 1px solid @gray-light;
+  //border-radius: 1rem;
+  color: @gray-dark;
+  padding: 0.5rem;
+  text-transform: lowercase;
+}
+
+.btn--block {
+  display: block;
+  width: 100%;
+}
+ 
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards__item {
+  display: flex;
+  padding: 1rem;
+  @media(min-width: 40rem) {
+    width: 50%;
   }
-  button {
-    width: 150px;
-    height: 50px;
-    margin-top: 20px;
-    background-color: $button-color;
-    border-radius: 0;
-    color: #fff;
-    box-shadow: 2px 2px 7px $button-shadow-color;
-    &:hover, &:active, &:focus {
-      color: #fff;
+  @media(min-width: 56rem) {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  &:hover {
+    .card__image {
+      filter: contrast(100%);
     }
   }
 }
 
-.product-image {
-  position: absolute;
-  right: -20px;
-  top: -40px;
-  img {
-    max-width: 400px;
+.card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.card__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(70%);
+  //filter: saturate(180%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
+  &::before {
+    content: "";
+	  display: block;
+    padding-top: 56.25%; // 16:9 aspect ratio
+  }
+  @media(min-width: 40rem) {
+    &::before {
+      padding-top: 66.6%; // 3:2 aspect ratio
+    }
   }
 }
 
-@media (max-width: 700px) {
-  .product-card {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  
+.card__image--flowers {
+  background-image: url(https://unsplash.it/800/600?image=82);
 }
 
-@media (max-width: 540px) {
-  .product-card {
-    overflow: hidden;
-    margin-bottom: 50px;
-  }
-  .product-details {
-    width: 60%;
-    z-index: 1;
-  }
-  .product-image {
-    width: 100%;
-    left: 40%;
-    top: -50px;
-  }
+.card__image--river {
+  background-image: url(https://unsplash.it/800/600?image=11);
 }
 
-@media (max-width: 440px) {
-    .product-details {
-      width: 65%;
-  }
+.card__image--record {
+  background-image: url(https://unsplash.it/800/600?image=39);
 }
 
-@media (max-width: 365px) {
-    .product-details {
-      width: 80%;
-      position: relative;
-      color: #333;
-      background-color: rgba(255, 255, 255, 0.7);
-  }
+.card__image--fence {
+  background-image: url(https://unsplash.it/800/600?image=59);
 }
+
+.card__title {
+  color: @gray-dark;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.card__text {
+  flex: 1 1 auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+
 </style>
 </head>
 <body>
 
-<div class="product-card">
-    <div class="product-image">
-    <img src="http://www.aendesign.co.uk/images/hc%20t-shirt%20mock-up%20front%401-crop-u22496.png?crc=114384536">
-  </div>
-  <div class="product-details">
-    <h1>Alight Motion v4.2.3</h1>
-    <p>Alight Motion Premium subscribtion unlocked with .xml preset import support</p>
-    <button type="button" class="btn">Download Now</button>
-  </div>
-</div>
+<ul class="cards">
+  <li class="cards__item">
+    <div class="card">
+      <div class="card__image card__image--fence"></div>
+      <div class="card__content">
+        <div class="card__title">Alight Motion v4.2.3</div>
+        <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
+        <button class="btn btn--block card__btn">Button</button>
+      </div>
+    </div>
+  </li>
 
 </body>
 </html>
